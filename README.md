@@ -1,80 +1,48 @@
-# Play 2.0 
+# MailSend
 
-Play 2.0 is a high productivity Java and Scala Web application framework, integrating all components and API needed for modern Web application development. 
+This PlayFramework 2 application shows how to send emails using the Play 1.x approach.
+This plugin uses Emailer plugin from TypeSafe (https://github.com/typesafehub/play-plugins/tree/master/mailer)
 
-It is based on a lightweight stateless Web friendly architecture and features predictable and minimal resources consumption (CPU, Memory, Threads) for highly scalable applications thanks to its reactive model based on Iteratee IO.
+## Instalation
 
-http://www.playframework.org
+* Change SMTP properties in application.conf
+* Change the user email in Global.java (The file that inserts a user to test the email sending)
 
-## Installing
+## Using MailSend:
 
-For convenience, you should add the framework installation directory to your system PATH. On UNIX systems will be something like:
+```java
+import com.relloder.notification.Mailer;
+import views.html.notifiers.welcome;
+import views.html.notifiers.lostpassword;
 
-```bash
-export PATH=$PATH:/path/to/play2.0
+public class Mails extends Mailer {
+
+	
+public static void welcome(User user) {
+		setSubject("Welcome %s", user.name);
+		addRecipient(user.email);
+		addFrom(no-reply <no-reply@example.com>);
+		// get html and process the args in the view
+		String mail = welcome.render(user).body();
+		send(mail);
+	}
+
+	public static void lostPassword(User user) {
+		String newpassword = user.password;
+		addFrom(Robot <robot@example.com>);
+		setSubject("Your password has been reset");
+		addRecipient(user.email);
+		String mail = lostpassword.render(user, newpassword).body();
+		send(mail);
+	}
+}
 ```
-
-On windows systems you'll need to set it in the global environment variables.
-
-> If you’re on UNIX, make sure that the play script is executable (otherwise do a chmod a+x play).
-
-## Getting started
-
-Enter any existing Play 2.0 application directory and use the `play` command to launch the development console:
-
-```bash
-$ cd ~/workspace/myApplication
-$ play
-```
-
-You can also directly use `play run` to run the application:
-
-```bash
-$ cd ~/workspace/myApplication
-$ play run
-```
-
-Use `play new yourNewApplication` to create a new application:
-
-```bash
-$ cd ~/workspace
-$ play new myNewApplication
-```
-
-Once the application is created, use it as any existing application:
-
-```bash
-$ cd myNewApplication
-$ play
-```
-
-## Running the sample applications
-
-There are several samples applications included in the `samples/` directory. For example, to run the included Scala Hello World application:
-
-```bash
-$ cd ~/workspace/play2.0/samples/scala/helloworld/
-$ play run
-```
-> The application will be available on port 9000.
-
-## Documentation
-
-The edge documentation is available at https://github.com/playframework/Play20/wiki.
-
-## Issues tracker
-
-Report issues at https://play.lighthouseapp.com/projects/82401-play-20/overview.
-
-## Contributors
-
-Check for all contributors at https://github.com/playframework/Play20/contributors.
 
 ## Licence
 
 This software is licensed under the Apache 2 license, quoted below.
 
-Copyright 2012 Typesafe (http://www.typesafe.com).
+Copyright 2012 Relloder (http://www.relloder.com).
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this project except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
 

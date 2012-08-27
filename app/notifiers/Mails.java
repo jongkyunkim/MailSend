@@ -8,7 +8,7 @@ import models.User;
 
 public class Mails extends Mailer {
 
-	public static final String noReply = "Hugo <no-reply@example.com >";
+	public static final String noReply = "no-reply <no-reply@example.com>";
 
 	public static void welcome(User user) {
 		setSubject("Welcome %s", user.name);
@@ -21,7 +21,6 @@ public class Mails extends Mailer {
 
 	public static void lostPassword(User user) {
 		String newpassword = user.password;
-		// addFrom("Robot <robot@thecompany.com>");
 		addFrom(noReply);
 		setSubject("Your password has been reset");
 		addRecipient(user.email);
