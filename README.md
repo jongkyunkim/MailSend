@@ -5,8 +5,8 @@ This plugin uses Emailer plugin from TypeSafe (https://github.com/typesafehub/pl
 
 ## Instalation
 
-* Change SMTP properties in application.conf
-* Change the user email in Global.java (The file that inserts a user to test the email sending)
+* Change SMTP properties on conf/application.conf
+* Change the test user email in app/Global.java 
 
 ## Using MailSend:
 
