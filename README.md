@@ -21,7 +21,7 @@ public class Mails extends Mailer {
 public static void welcome(User user) {
 		setSubject("Welcome %s", user.name);
 		addRecipient(user.email);
-		addFrom(no-reply <no-reply@example.com>);
+		addFrom("no-reply <no-reply@example.com>");
 		// get html and process the args in the view
 		String mail = welcome.render(user).body();
 		send(mail);
@@ -29,7 +29,7 @@ public static void welcome(User user) {
 
 	public static void lostPassword(User user) {
 		String newpassword = user.password;
-		addFrom(Robot <robot@example.com>);
+		addFrom("Robot <robot@example.com>");
 		setSubject("Your password has been reset");
 		addRecipient(user.email);
 		String mail = lostpassword.render(user, newpassword).body();
