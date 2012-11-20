@@ -12,8 +12,6 @@ object ApplicationBuild extends Build {
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
-      resolvers += Resolver.url("Objectify Play Repository releases", url("http://schaloner.github.com/releases/"))(Resolver.ivyStylePatterns),
-      resolvers += Resolver.url("Objectify Play Repository snapshots", url("http://schaloner.github.com/snapshots/"))(Resolver.ivyStylePatterns)
     )
 
 }
